@@ -7,9 +7,8 @@ from reporting.report_generator import create_word_report_with_analysis, create_
 
 def main():
     emails_data = fetch_emails(config.EMAIL_USER, config.EMAIL_PASSWORD)
-    summaries = summarize_content(emails_data)
+    summaries = summarize_content(emails_data, config.OPENAI_API_KEY)
     
-    # Get user input for report type
     report_type = input("Enter 'word' for Word report, 'excel' for Excel report, or 'both' for both: ").strip().lower()
     if report_type == "word":
         create_word_report_with_analysis(summaries)
